@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npm install && npx puppeteer browsers install chrome",
+    "dev": "npm install && apt install -y chromium-browser",
     "start": "node index.js"
   },
   "keywords": [],
