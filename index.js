@@ -7,7 +7,7 @@ const { findChrome } = require('find-chrome-bin')
 
 async function init() {
   let chromeInfo = await findChrome({
-    max: 95,
+    max: 125,
     download: {
       puppeteerCore,
       path: join('.', 'chrome'),
