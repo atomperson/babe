@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npm install && npx playwright install webkit",
+    "dev": "npm install",
     "start": "node index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "playwright-webkit": "^1.44.0"
+    "puppeteer": "^22.9.0"
   }
 }
