@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer')
 
 async function main() {
-  const browser = await puppeteer.launch()
+  const browser = await puppeteer.launch({ executablePath: '/usr/bin/chromium-browser' })
   const page = await browser.newPage()
   await page.goto('https://home-tvt1.onrender.com')
 
