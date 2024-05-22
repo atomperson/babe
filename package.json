@@ -5,14 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npm install",
+    "dev": "npm install && npx playwright install webkit",
     "start": "node index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "playwright-webkit": "^1.44.0",
-    "@playwright/browser-webkit": "^1.44.0"
+    "playwright-webkit": "^1.44.0"
   }
 }
