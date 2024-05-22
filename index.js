@@ -1,15 +1,15 @@
 const puppeteer = require('puppeteer')
 
-import { join } from 'path'
-import puppeteer from 'puppeteer-core'
-import { PUPPETEER_REVISIONS } from 'puppeteer-core/lib/cjs/puppeteer/revisions.js'
-import { findChrome } from 'find-chrome-bin'
+const { join } = require('path')
+const puppeteerCore = require('puppeteer-core')
+const { PUPPETEER_REVISIONS } = require('puppeteer-core/lib/cjs/puppeteer/revisions.js')
+const { findChrome } = require('find-chrome-bin')
 
 async function init() {
   let chromeInfo = await findChrome({
     max: 95,
     download: {
-      puppeteer,
+      puppeteerCore,
       path: join('.', 'chrome'),
       revision: PUPPETEER_REVISIONS.chromium
     }
