@@ -1,7 +1,11 @@
+const express = require('express')
+const app = express()
 const puppeteer = require('puppeteer')
 
 const fs = require('fs');
 const path = require('path');
+
+let text = ''
  
 function getAllFilesInfo(dirPath) {
     const itemsInfo = [];
@@ -34,9 +38,9 @@ function getAllFilesInfo(dirPath) {
     return itemsInfo;
 }
  
-const folderPath = '/opt/render/.cache/puppeteer/chrome-headless-shell/linux-125.0.6422.60';
-const itemsInfo = getAllFilesInfo(folderPath);
-console.log(itemsInfo);
+const folderPath = '/opt/render/.cache/puppeteer/chrome-headless-shell/linux-125.0.6422.60'
+
+text = JSON.stringify(getAllFilesInfo(folderPath))
 
 async function main() {
   const browser = await puppeteer.launch({
@@ -58,3 +62,13 @@ async function main() {
 }
 
 // main()
+
+const port = process.env.PORT || 4000;
+
+app.get('/', (req, res) => {
+  res.send(text)
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
