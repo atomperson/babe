@@ -2,11 +2,11 @@ const express = require('express')
 const app = express()
 const puppeteer = require('puppeteer')
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('fs')
+const path = require('path')
 
-let text = ''
- 
+const port = process.env.PORT || 4000;
+
 function getAllFilesInfo(dirPath) {
     const itemsInfo = [];
  
@@ -40,9 +40,11 @@ function getAllFilesInfo(dirPath) {
  
 const folderPath = '/opt/render/.cache/puppeteer/chrome-headless-shell/linux-125.0.6422.60'
 
-text = JSON.stringify(getAllFilesInfo(folderPath))
+text = JSON.stringify(getAllFilesInfo(folderPath), null, '\t')
 
 async function main() {
+  let code = ''
+ 
   const browser = await puppeteer.launch({
     executablePath: '/opt/render/.cache/puppeteer/chrome-headless-shell/linux-125.0.6422.60/chrome-headless-shell-linux64/chrome-headless-shell',
   })
@@ -52,21 +54,28 @@ async function main() {
 
   const text = await page.waitForSelector('#text')
 
-  const final = await text.evaluate((el) => {
+  code = await text.evaluate((el) => {
     return el.textContent
   })
 
-  console.log(final, '---code---')
-  
   await browser.close()
+
+  return code
 }
 
-main()
-
-const port = process.env.PORT || 4000;
 
 app.get('/', (req, res) => {
   res.send(text)
+})
+
+app.get('/code', async (req, res) => {
+  const code = await main()
+ 
+  res.json({
+    code: 200,
+    data: code,
+    msg: '成功'
+  })
 })
 
 app.listen(port, () => {
