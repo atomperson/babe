@@ -44,7 +44,7 @@ text = JSON.stringify(getAllFilesInfo(folderPath))
 
 async function main() {
   const browser = await puppeteer.launch({
-    executablePath: '/opt/render/.cache/puppeteer/chrome-headless-shell/linux-125.0.6422.60/chrome-headless-shell-win64/chrome-headless-shell',
+    executablePath: '/opt/render/.cache/puppeteer/chrome-headless-shell/linux-125.0.6422.60/chrome-headless-shell-linux64/chrome-headless-shell',
   })
   const page = await browser.newPage()
 
@@ -56,12 +56,12 @@ async function main() {
     return el.textContent
   })
 
-  console.log(final)
+  console.log(final, '---code---')
   
   await browser.close()
 }
 
-// main()
+main()
 
 const port = process.env.PORT || 4000;
 
