@@ -48,9 +48,12 @@ async function main() {
   const browser = await puppeteer.launch({
     executablePath: '/opt/render/.cache/puppeteer/chrome-headless-shell/linux-125.0.6422.60/chrome-headless-shell-linux64/chrome-headless-shell',
   })
+
+  const html = path.join(__dirname, './code.html')
+
   const page = await browser.newPage()
 
-  await page.goto('https://home-tvt1.onrender.com')
+  await page.goto(`file://${html}`)
 
   const text = await page.waitForSelector('#text')
 
