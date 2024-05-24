@@ -38,7 +38,7 @@ function getAllFilesInfo(dirPath) {
     return itemsInfo;
 }
  
-const folderPath = '/opt/render/.cache/puppeteer/chrome-headless-shell/linux-125.0.6422.60'
+const folderPath = '/opt/render/.cache/puppeteer/chrome-headless-shell/linux-125.0.6422.78'
 
 text = JSON.stringify(getAllFilesInfo(folderPath), null, '\t')
 
@@ -46,7 +46,7 @@ async function main() {
   let code = ''
  
   const browser = await puppeteer.launch({
-    executablePath: '/opt/render/.cache/puppeteer/chrome-headless-shell/linux-125.0.6422.60/chrome-headless-shell-linux64/chrome-headless-shell',
+    executablePath: '/opt/render/.cache/puppeteer/chrome-headless-shell/linux-125.0.6422.78/chrome-headless-shell-linux64/chrome-headless-shell',
   })
 
   const html = path.join(__dirname, './code.html')
