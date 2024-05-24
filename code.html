@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    window._fmOpt = {
+      partner: "tpjf",
+      appName: "appName",
+      token: "tongdun" + "-" + new Date().getTime() + "-" + Math.random().toString(16).substr(2),
+      fpHost: "https://ecustomer.cntaiping.com/tongdunprofile/h5",
+      fmb: true,
+      cub: true,
+      success: function (data) {
+        document.body.innerHTML = '<span id="text">' + data + '</span>'
+      }
+    }
+  </script>
+  <script src="https://ecustomer.cntaiping.com/tongdunprofile/h5/static/fm.js"></script>
+</head>
+<body></body>
+</html>
