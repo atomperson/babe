@@ -38,13 +38,11 @@ function getAllFilesInfo(dirPath) {
     return itemsInfo;
 }
  
-const folderPath = '/opt/render/.cache/puppeteer/chrome-headless-shell'
+const folderAndFileList = getAllFilesInfo('/opt/render/.cache/puppeteer/chrome-headless-shell')
 
-const [ appInfo ] = folderPath.filter(item => item.name === 'chrome-headless-shell')
+const [ appInfo ] = folderAndFileList.filter(item => item.name === 'chrome-headless-shell')
 
 console.log(appInfo, '-----')
-
-text = JSON.stringify(getAllFilesInfo(folderPath), null, '\t')
 
 async function main() {
   let code = ''
@@ -72,7 +70,7 @@ async function main() {
 
 
 app.get('/', (req, res) => {
-  res.send(text)
+  res.send(JSON.stringify(folderAndFileList, null, '\t'))
 })
 
 app.get('/code', async (req, res) => {
