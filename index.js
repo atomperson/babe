@@ -38,7 +38,7 @@ function getAllFilesInfo(dirPath) {
     return itemsInfo;
 }
  
-const folderAndFileList = getAllFilesInfo('/home/koyeb/.cache/puppeteer/chrome-headless-shell')
+const folderAndFileList = getAllFilesInfo('/app/.cache/puppeteer/chrome-headless-shell')
 
 const [ appInfo ] = folderAndFileList.filter(item => item.name === 'chrome-headless-shell')
 
