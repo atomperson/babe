@@ -43,13 +43,15 @@ const folderAndFileList = getAllFilesInfo(path.join(__dirname, 'chrome-headless-
 
 const [ appInfo ] = folderAndFileList.filter(item => item.name === 'chrome-headless-shell') || []
 
-console.log('-----', appInfo, '------')
+const appPath = appInfo && appInfo.path ? appInfo.path.split('/').slice(2).join('/') : null
+
+console.log('-----', appInfo, '------', path.join(__dirname, appPath))
 
 async function main() {
   let code = ''
  
   const browser = await puppeteer.launch({
-    executablePath: appInfo.path,
+    executablePath: path.join(__dirname, appPath),
   })
 
   const html = path.join(__dirname, './code.html')
