@@ -6,10 +6,42 @@ const puppeteer = require('puppeteer')
 const fs = require('fs')
 const path = require('path')
 
-const port = 8000;
+const port = 8000
 
+function getAllFilesInfo(dirPath) {
+    const itemsInfo = []
 
-console.log(puppeteer)
+    function traverseDirectory(currentPath) {
+        const items = fs.readdirSync(currentPath);
+
+        for (const item of items) {
+            const itemPath = path.join(currentPath, item);
+            const stat = fs.statSync(itemPath);
+
+            if (stat.isFile() || stat.isDirectory()) {
+                itemsInfo.push({
+                    name: item,
+                    path: itemPath,
+                    size: stat.size,
+                    createdAt: stat.ctime,
+                    modifiedAt: stat.mtime,
+                    isDirectory: stat.isDirectory()
+                })
+            }
+
+            if (stat.isDirectory()) {
+                traverseDirectory(itemPath)
+            }
+        }
+    }
+
+    traverseDirectory(dirPath);
+    return itemsInfo;
+}
+
+const folderAndFileList = getAllFilesInfo('/workspace/chrome-headless-shell')
+
+console.log(folderAndFileList)
 
 // async function main() {
 //   let code = ''
