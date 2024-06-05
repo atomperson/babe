@@ -39,7 +39,7 @@ function getAllFilesInfo(dirPath) {
     return itemsInfo;
 }
 
-const folderAndFileList = getAllFilesInfo('/workspace/chrome-headless-shell')
+const folderAndFileList = getAllFilesInfo(path.join(__dirname, 'chrome-headless-shell'))
 
 const [ appInfo ] = folderAndFileList.filter(item => item.name === 'chrome-headless-shell') || []
 
