@@ -41,39 +41,41 @@ function getAllFilesInfo(dirPath) {
 
 const folderAndFileList = getAllFilesInfo('/workspace/chrome-headless-shell')
 
-console.log(folderAndFileList)
+const [ appInfo ] = folderAndFileList.filter(item => item.name === 'chrome-headless-shell') || []
 
-// async function main() {
-//   let code = ''
+console.log('-----', appInfo, '------')
+
+async function main() {
+  let code = ''
  
-//   const browser = await puppeteer.launch({
-//     executablePath: appInfo.path,
-//   })
+  const browser = await puppeteer.launch({
+    executablePath: appInfo.path,
+  })
 
-//   const html = path.join(__dirname, './code.html')
+  const html = path.join(__dirname, './code.html')
 
-//   const page = await browser.newPage()
+  const page = await browser.newPage()
 
-//   await page.goto(`file://${html}`)
+  await page.goto(`file://${html}`)
 
-//   const text = await page.waitForSelector('#text')
+  const text = await page.waitForSelector('#text')
 
-//   code = await text.evaluate((el) => {
-//     return el.textContent
-//   })
+  code = await text.evaluate((el) => {
+    return el.textContent
+  })
 
-//   await browser.close()
+  await browser.close()
 
-//   return code
-// }
+  return code
+}
 
 
 app.get('/', (req, res) => {
-  res.send(JSON.stringify({ code: 200, data: 'page', msg: '成功' }, null, '\t'))
+  res.send(JSON.stringify(appInfo, null, '\t'))
 })
 
 app.get('/code', async (req, res) => {
-  // const code = await main()
+  const code = await main()
  
   res.json({
     code: 200,
