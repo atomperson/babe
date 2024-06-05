@@ -1,80 +1,49 @@
 const express = require('express')
 const app = express()
-const puppeteer = require('puppeteer')
 
-const fs = require('fs')
-const path = require('path')
+const BrowserLess = require('browserless')
+
+const browser = BrowserLess()
+
+// const fs = require('fs')
+// const path = require('path')
 
 const port = 8000;
 
-function getAllFilesInfo(dirPath) {
-    const itemsInfo = [];
+
+console.log(browser)
+
+// async function main() {
+//   let code = ''
  
-    function traverseDirectory(currentPath) {
-        const items = fs.readdirSync(currentPath);
- 
-        for (const item of items) {
-            const itemPath = path.join(currentPath, item);
-            const stat = fs.statSync(itemPath);
- 
-            if (stat.isFile() || stat.isDirectory()) {
-                itemsInfo.push({
-                    name: item,
-                    path: itemPath,
-                    size: stat.size,
-                    createdAt: stat.ctime,
-                    modifiedAt: stat.mtime,
-                    isDirectory: stat.isDirectory()
-                });
-            }
- 
-            if (stat.isDirectory()) {
-                traverseDirectory(itemPath);
-            }
-        }
-    }
- 
-    traverseDirectory(dirPath);
-    return itemsInfo;
-}
- 
-const folderAndFileList = getAllFilesInfo('/app/.cache/puppeteer/chrome-headless-shell')
+//   const browser = await puppeteer.launch({
+//     executablePath: appInfo.path,
+//   })
 
-const [ appInfo ] = folderAndFileList.filter(item => item.name === 'chrome-headless-shell')
+//   const html = path.join(__dirname, './code.html')
 
-console.log(appInfo, '-----')
+//   const page = await browser.newPage()
 
-async function main() {
-  let code = ''
- 
-  const browser = await puppeteer.launch({
-    executablePath: appInfo.path,
-  })
+//   await page.goto(`file://${html}`)
 
-  const html = path.join(__dirname, './code.html')
+//   const text = await page.waitForSelector('#text')
 
-  const page = await browser.newPage()
+//   code = await text.evaluate((el) => {
+//     return el.textContent
+//   })
 
-  await page.goto(`file://${html}`)
+//   await browser.close()
 
-  const text = await page.waitForSelector('#text')
-
-  code = await text.evaluate((el) => {
-    return el.textContent
-  })
-
-  await browser.close()
-
-  return code
-}
+//   return code
+// }
 
 
 app.get('/', (req, res) => {
-  res.send(JSON.stringify(folderAndFileList, null, '\t'))
+  res.send(JSON.stringify({ code: 200, data: 'page', msg: '成功' }, null, '\t'))
 })
 
 app.get('/code', async (req, res) => {
-  const code = await main()
+  // const code = await main()
  
   res.json({
     code: 200,
