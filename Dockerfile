@@ -1,10 +1,7 @@
 FROM centos:8
 
 RUN dnf clean all \
-    && dnf makecache \
-    && dnf module install nodejs \
-    && node -v \
-    && npm -v
+    && dnf makecache
 
 # RUN (curl -fsSL https://rpm.nodesource.com/setup_20.x | bash -) \
 #   && yum clean all -y \
