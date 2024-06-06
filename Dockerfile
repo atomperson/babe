@@ -9,7 +9,7 @@ ENV NPM_CONFIG_LOGLEVEL info
 ENV NODE_VERSION 20.11.1
 
 RUN export PLATFORM=$(if [ "$TARGETPLATFORM" = "linux/amd64" ] ; then echo "x64"; else echo "arm64"; fi) \
-  buildDeps='xz-utils curl ca-certificates gnupg2 lsb-release dirmngr libglib2.0-0' \
+  buildDeps='xz-utils curl ca-certificates gnupg2 lsb-release dirmngr libglib2.0-0 atk cups-libs libxkbcommon libXcomposite libXdamage libXrandr libgbm pango' \
   && set -x \
   && apt-get update && apt-get upgrade -y && apt-get install -y $buildDeps --no-install-recommends \
   && rm -rf /var/lib/apt/lists/* \
