@@ -10,7 +10,7 @@ const browser = BrowserLess()
 // const fs = require('fs')
 // const path = require('path')
 
-const port = 8000
+const port = 3000
 
 // function getAllFilesInfo(dirPath) {
 //     const itemsInfo = []
