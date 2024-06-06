@@ -5,7 +5,7 @@ COPY ./code.html ./
 COPY ./index.js ./
 COPY ./package.json ./
 
-CMD ["npm" "install"]
+RUN npm install
 
 ARG PORT
 EXPOSE ${PORT:-3000}
