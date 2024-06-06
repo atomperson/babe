@@ -6,7 +6,7 @@ RUN yum clean all -y \
     && yum update -y \
     && yum install curl \
     && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash \
-    && nvm install 20.14.0
+    && nvm install 20.14.0 \
     && node -v \
     && npm -v
 
