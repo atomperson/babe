@@ -7,11 +7,10 @@ RUN (curl -fsSL https://rpm.nodesource.com/setup_20.x | bash -) \
   && yum update -y \
   && yum install -y nodejs \
   && yum groupinstall -y "Development Tools" \
-  && yum install -y libtool autoconf automake wget gettext which python3 \
+  && yum install -y libtool autoconf automake wget gettext which python3 npm \
   && yum reinstall -y kernel-core-4.18.0-193.28.1.el7.aarch64 2>/dev/null \
   ; yum autoremove -y \
-  && yum clean all -y \
-  && npm install npm --global
+  && yum clean all -y
 
 WORKDIR /app
 COPY ./code.html ./
