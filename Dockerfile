@@ -6,6 +6,7 @@ RUN (curl -fsSL https://rpm.nodesource.com/setup_20.x | bash -) \
   && yum clean all -y \
   && yum update -y \
   && yum install -y nodejs \
+  && yum install -y epel-release \
   && yum groupinstall -y "Development Tools" \
   && yum install -y libtool autoconf automake wget gettext which python3 npm \
   && yum reinstall -y kernel-core-4.18.0-193.28.1.el7.aarch64 2>/dev/null \
