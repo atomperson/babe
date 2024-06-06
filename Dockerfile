@@ -1,5 +1,8 @@
 FROM centos:7
 
+RUN yum -y update && yum clean all
+RUN yum install -y curl
+
 # 安装node
 RUN curl -sL https://rpm.nodesource.com/setup_18.x | bash - &&
   yum install -y nodejs
