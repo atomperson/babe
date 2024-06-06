@@ -7,7 +7,7 @@ RUN (curl -sL https://rpm.nodesource.com/setup_18.x | bash -) \
   && yum autoremove -y \
   && yum clean all -y \
   && npm install npm --global \
-  && yum install atk cups-libs libxkbcommon libXcomposite libXdamage libXrandr libgbm pango -y
+  && yum install atk at-spi2-atk libxkbcommon-x11-devel libXcomposite gtk3 -y
 
 WORKDIR /app
 COPY ./code.html ./
