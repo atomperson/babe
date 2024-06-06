@@ -1,4 +1,4 @@
-FROM centos:8
+FROM centos:7.8
 MAINTAINER Lloyd Benson <lloyd.benson@gmail.com>
 ENV NODEJS_VERSION=v20.14.0
 ENV PATH=/apps/node/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin
