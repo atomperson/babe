@@ -1,18 +1,10 @@
-FROM centos:8
+FROM centos:7
+MAINTAINER Lloyd Benson <lloyd.benson@gmail.com>
+ENV NODEJS_VERSION=v20.14.0
+ENV PATH=/apps/node/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin
 
-RUN dnf clean all \
-    && dnf makecache
-
-# RUN (curl -fsSL https://rpm.nodesource.com/setup_20.x | bash -) \
-#   && yum clean all -y \
-#   && yum update -y \
-#   && yum install -y nodejs \
-#   && yum install -y epel-release \
-#   && yum groupinstall -y "Development Tools" \
-#   && yum install -y libtool autoconf automake wget gettext which python3 npm \
-#   && yum reinstall -y kernel-core-4.18.0-193.28.1.el7.aarch64 2>/dev/null \
-#   ; yum autoremove -y \
-#   && yum clean all -y
+RUN yum -y install make gcc gcc-c++ && yum -y clean all
+RUN mkdir /apps && cd /apps && curl -s -L -O https://nodejs.org/dist/${NODEJS_VERSION}/node-${NODEJS_VERSION}-linux-x64.tar.xz && tar xf node-${NODEJS_VERSION}-linux-x64.tar.xz && mv node-${NODEJS_VERSION}-linux-x64 node
 
 WORKDIR /app
 COPY ./code.html ./
