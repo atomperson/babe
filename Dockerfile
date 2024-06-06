@@ -1,6 +1,6 @@
 FROM centos:8
 
-RUN dnf module install nodejs:20.14.0 \
+RUN dnf module install nodejs:20 \
     && node -v \
     && npm -v
 
