@@ -2,7 +2,7 @@ FROM centos:8
 
 RUN dnf clean all \
     && dnf makecache \
-    && dnf module install nodejs:20 \
+    && dnf module install nodejs \
     && node -v \
     && npm -v
 
