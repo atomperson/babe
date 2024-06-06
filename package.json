@@ -13,6 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
-    "puppeteer": "^22.10.0"
+    "puppeteer": "^22.10.0",
+    "browserless": "^10.5.1",
+    "lodash": "^4.17.21"
   }
 }
