@@ -1,5 +1,6 @@
 FROM ubuntu:20.10
-RUN  apt-get update && \
+RUN  sed -i "s/old-releases/archive/g" /etc/apt/sources.list /etc/apt/sources.list.d/*.list && \
+     apt-get update && \
      apt-get install -y curl && \
      apt-get install chromium -y && \
      curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash && \
