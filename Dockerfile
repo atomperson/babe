@@ -82,7 +82,7 @@ COPY ./code.html ./
 COPY ./index.js ./
 COPY ./package.json ./
 
-RUN npm install
+RUN npm install && node node_modules/puppeteer/install.mjs
 
 ARG PORT
 EXPOSE ${PORT:-3000}
