@@ -74,17 +74,17 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y google-chrome-stable fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf libxss1 \
       --no-install-recommends \
-    && rm -rf /var/lib/apt/lists/* \
-    && export PUPPETEER_DOWNLOAD_PATH=/home
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 COPY ./code.html ./
 COPY ./index.js ./
 COPY ./package.json ./
 
-RUN npm install && node node_modules/puppeteer/install.mjs
+RUN npm install
 
 ARG PORT
 EXPOSE ${PORT:-3000}
 
+CMD ["export", "PUPPETEER_DOWNLOAD_PATH=/home"]
 CMD ["npm", "run", "start"]
