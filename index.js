@@ -51,7 +51,7 @@ async function main() {
   let code = ''
  
   const browser = await puppeteer.launch({
-    executablePath: 'google-chrome-stable',// path.join(__dirname, appPath),
+    // executablePath: 'google-chrome-stable',// path.join(__dirname, appPath),
     args: ['--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox'],
     timeout: 0
   })
