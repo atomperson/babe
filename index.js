@@ -53,7 +53,7 @@ async function main() {
   const browser = await puppeteer.launch({
     headless: 'shell',
     executablePath: path.join(__dirname, appPath),
-    args: ['--enable-gpu', '--no-sandbox', '--disable-setuid-sandbox'],
+    args: ['--disable-gpu', '--disable-dev-shm-usage', '--no-first-run', '--single-process', '--no-zygote', '--no-sandbox', '--disable-setuid-sandbox'],
     timeout: 0
   })
 
