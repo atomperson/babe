@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node -v",
-    "start": "npx @puppeteer/browsers install chrome-headless-shell && node index.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
