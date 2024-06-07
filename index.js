@@ -51,7 +51,7 @@ async function main() {
   let code = ''
  
   const browser = await puppeteer.launch({
-    executablePath: '/usr/bin/chromium', // path.join(__dirname, appPath),
+    executablePath: '/usr/bin/chromium-browser', // path.join(__dirname, appPath),
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   })
 
