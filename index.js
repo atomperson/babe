@@ -1,11 +1,7 @@
 const express = require('express')
 const app = express()
 
-const BrowserLess = require('browserless')
-
-const browser = BrowserLess()
-
-// const puppeteer = require('puppeteer')
+const puppeteer = require('puppeteer')
 
 // const fs = require('fs')
 // const path = require('path')
@@ -51,29 +47,30 @@ const port = 3000
 
 // console.log('-----', appInfo, '------', path.join(__dirname, appPath))
 
-// async function main() {
-//   let code = ''
+async function main() {
+  let code = ''
  
-//   const browser = await puppeteer.launch({
-//     executablePath: path.join(__dirname, appPath),
-//   })
+  const browser = await puppeteer.launch({
+    executablePath: '/usr/bin/chromium', // path.join(__dirname, appPath),
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+  })
 
-//   const html = path.join(__dirname, './code.html')
+  const html = path.join(__dirname, './code.html')
 
-//   const page = await browser.newPage()
+  const page = await browser.newPage()
 
-//   await page.goto(`file://${html}`)
+  await page.goto(`file://${html}`)
 
-//   const text = await page.waitForSelector('#text')
+  const text = await page.waitForSelector('#text')
 
-//   code = await text.evaluate((el) => {
-//     return el.textContent
-//   })
+  code = await text.evaluate((el) => {
+    return el.textContent
+  })
 
-//   await browser.close()
+  await browser.close()
 
-//   return code
-// }
+  return code
+}
 
 
 app.get('/', (req, res) => {
@@ -81,16 +78,10 @@ app.get('/', (req, res) => {
 })
 
 app.get('/code', async (req, res) => {
-  // const code = await main()
+  const code = await main()
 
-  const context = await browser.createContext()
+  console.log(code)
 
-  const text = await context.text('https://wantyou.stormkit.dev')
-
-  console.log(text)
-
-  browser.close()
- 
   res.json({
     code: 200,
     data: text,
