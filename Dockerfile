@@ -42,6 +42,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     lsb-release \
     wget \
     xdg-utils \
+    libasound2 \
     && rm -rf /var/lib/apt/lists/*
 
 # Setting Enviroment variables
