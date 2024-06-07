@@ -7,8 +7,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     xz-utils \
     openssl \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt-get install chromium -y
+    chromium \
+    && rm -rf /var/lib/apt/lists/*
 
 # Setting Enviroment variables
 ENV NODE_VERSION 20.14.0
