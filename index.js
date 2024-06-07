@@ -53,7 +53,7 @@ async function main() {
   console.log('开始进入code')
  
   const browser = await puppeteer.launch({
-    executablePath: appInfo.path
+    executablePath: appInfo.path,
     args: ['--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox', '--enable-gpu'],
     // timeout: 0
   })
