@@ -39,19 +39,19 @@ function getAllFilesInfo(dirPath) {
     return itemsInfo;
 }
 
-// const folderAndFileList = getAllFilesInfo(path.join(__dirname, 'chrome-headless-shell'))
+const folderAndFileList = getAllFilesInfo(path.join(__dirname, 'chrome-headless-shell'))
 
-// const [ appInfo ] = folderAndFileList.filter(item => item.name === 'chrome-headless-shell') || []
+const [ appInfo ] = folderAndFileList.filter(item => item.name === 'chrome-headless-shell') || []
 
 // const appPath = appInfo && appInfo.path ? appInfo.path.split('/').slice(2).join('/') : null
 
-// console.log('-----', path.join(__dirname, appPath))
+console.log('-----', appInfo)
 
 async function main() {
   let code = ''
  
   const browser = await puppeteer.launch({
-    // executablePath: 'google-chrome-stable',// path.join(__dirname, appPath),
+    executablePath: appInfo.path,
     args: ['--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox'],
     timeout: 0
   })
