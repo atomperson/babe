@@ -58,11 +58,12 @@ async function main() {
 
   console.log(browser, '--------')
 
-  const html = path.join(__dirname, './code.html')
+  // const html = path.join(__dirname, './code.html')
 
   const page = await browser.newPage()
 
-  await page.goto(`file://${html}`)
+// `file://${html}`
+  await page.goto('https://wantyou.stormkit.dev/')
 
   const text = await page.waitForSelector('#text', { timeout: 0 })
 
