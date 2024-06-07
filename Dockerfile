@@ -42,6 +42,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     lsb-release \
     wget \
     xdg-utils \
+    aptitude \
     && rm -rf /var/lib/apt/lists/* \
     && aptitude update \
     && aptitude install libasound2 -y
