@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     openssl \
     chromium \
     libgobject-2.0-0 \
+    libnss3 \
     && rm -rf /var/lib/apt/lists/*
 
 # Setting Enviroment variables
