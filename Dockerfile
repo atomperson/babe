@@ -45,7 +45,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     aptitude \
     && rm -rf /var/lib/apt/lists/* \
     && aptitude update \
-    && aptitude install libasound2 -y
+    && aptitude install liboss4-salsa-asound2 libasound2t64 libasound2 -y
 
 # Setting Enviroment variables
 ENV NODE_VERSION 20.14.0
