@@ -49,23 +49,26 @@ console.log('-----', appInfo)
 
 async function main() {
   let code = ''
+
+  console.log('开始进入code')
  
   const browser = await puppeteer.launch({
-    executablePath: appInfo.path,
-    args: ['--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox'],
-    timeout: 0
+    executablePath: appInfo.path
+    // args: ['--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox'],
+    // timeout: 0
   })
 
-  console.log(browser, '--------')
+  const html = path.join(__dirname, './code.html')
 
-  // const html = path.join(__dirname, './code.html')
-
+  console.log('html path', '----->', html)
+    
   const page = await browser.newPage()
 
-// `file://${html}`
-  await page.goto('https://wantyou.stormkit.dev/')
+  await page.goto(`file://${html}`)
 
   const text = await page.waitForSelector('#text', { timeout: 0 })
+
+  console.log('text', '----->', text)
 
   code = await text.evaluate((el) => {
     return el.textContent
