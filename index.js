@@ -45,7 +45,7 @@ function getAllFilesInfo(dirPath) {
 
 // const appPath = appInfo && appInfo.path ? appInfo.path.split('/').slice(2).join('/') : null
 
-console.log('-----', getAllFilesInfo('/usr/bin/chromium-browser'))
+console.log('-----', getAllFilesInfo(path.join(__dirname, 'chrome-headless-shell')))
 
 async function main() {
   let code = ''
