@@ -39,19 +39,19 @@ function getAllFilesInfo(dirPath) {
     return itemsInfo;
 }
 
-// const folderAndFileList = getAllFilesInfo(path.join(__dirname, 'chrome-headless-shell'))
+const folderAndFileList = getAllFilesInfo(path.join(__dirname, 'chrome-headless-shell'))
 
-// const [ appInfo ] = folderAndFileList.filter(item => item.name === 'chrome-headless-shell') || []
+const [ appInfo ] = folderAndFileList.filter(item => item.name === 'chrome-headless-shell') || []
 
-// const appPath = appInfo && appInfo.path ? appInfo.path.split('/').slice(2).join('/') : null
+const appPath = appInfo && appInfo.path ? appInfo.path.split('/').slice(2).join('/') : null
 
-console.log('-----', getAllFilesInfo(path.join(__dirname, 'chrome-headless-shell')))
+console.log('-----', path.join(__dirname, appPath))
 
 async function main() {
   let code = ''
  
   const browser = await puppeteer.launch({
-    executablePath: '/usr/bin/chromium-browser', // path.join(__dirname, appPath),
+    executablePath: path.join(__dirname, appPath),
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   })
 
