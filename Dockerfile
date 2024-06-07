@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     chromium \
     libgobject-2.0-0 \
     libnss3 \
+    libatk-bridge2.0-0 \
+    libatk1.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
 # Setting Enviroment variables
