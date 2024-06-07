@@ -86,5 +86,4 @@ RUN npm install
 ARG PORT
 EXPOSE ${PORT:-3000}
 
-CMD ["export", "PUPPETEER_DOWNLOAD_PATH=/home"]
 CMD ["npm", "run", "start"]
