@@ -9,7 +9,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     openssl \
     chromium \
     fonts-liberation \
-    libasound2 \
     libatk-bridge2.0-0 \
     libatk1.0-0 \
     libc6 \
