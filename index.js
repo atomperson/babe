@@ -56,13 +56,15 @@ async function main() {
     args: ['--enable-gpu', '--no-sandbox', '--disable-setuid-sandbox']
   })
 
+  console.log(browser, '--------')
+
   const html = path.join(__dirname, './code.html')
 
   const page = await browser.newPage()
 
   await page.goto(`file://${html}`)
 
-  const text = await page.waitForSelector('#text')
+  const text = await page.waitForSelector('#text', { timeout: 0 })
 
   code = await text.evaluate((el) => {
     return el.textContent
