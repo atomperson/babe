@@ -51,8 +51,9 @@ async function main() {
   let code = ''
  
   const browser = await puppeteer.launch({
+    headless: 'shell',
     executablePath: path.join(__dirname, appPath),
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
+    args: ['--enable-gpu', '--no-sandbox', '--disable-setuid-sandbox']
   })
 
   const html = path.join(__dirname, './code.html')
