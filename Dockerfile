@@ -1,14 +1,26 @@
-FROM ubuntu:20.10
-RUN  sed -i "s/old-releases/archive/g" /etc/apt/sources.list /etc/apt/sources.list.d/*.list && \
-     apt-get update && \
-     apt-get install -y curl && \
-     apt-get install chromium -y && \
-     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash && \
-     export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")" && \
-     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && \
-     nvm install 20.14.0 && \
-     nvm use 20.14.0 && \
-     npm install -g yarn
+FROM ubuntu:latest
+MAINTAINER Jan Sanchez <joejansanchez@gmail.com>
+
+# Udpating and Installing dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    curl \
+    xz-utils \
+    openssl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Setting Enviroment variables
+ENV NODE_VERSION 6.10.2
+ENV NODE_ARCH x64
+ENV TMP /tmp
+ENV NODE_FILEPATH node-v$NODE_VERSION-linux-$NODE_ARCH
+
+# Install Nodejs
+RUN curl -SL https://nodejs.org/dist/v$NODE_VERSION/$NODE_FILEPATH.tar.xz -o $TMP/$NODE_FILEPATH.tar.xz \
+    && cd $TMP/ && tar -xJf $NODE_FILEPATH.tar.xz && rm $NODE_FILEPATH.tar.xz \
+    && mv $NODE_FILEPATH /opt/node \
+    && ln -sf /opt/node/bin/node /usr/bin/node \
+    && ln -sf /opt/node/bin/npm /usr/bin/npm
 
 WORKDIR /app
 COPY ./code.html ./
