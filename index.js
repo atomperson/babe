@@ -84,7 +84,7 @@ app.get('/code', async (req, res) => {
 
   res.json({
     code: 200,
-    data: text,
+    data: code,
     msg: '成功'
   })
 })
