@@ -54,7 +54,7 @@ async function main() {
  
   const browser = await puppeteer.launch({
     executablePath: appInfo.path
-    // args: ['--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox'],
+    args: ['--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox', '--enable-gpu'],
     // timeout: 0
   })
 
