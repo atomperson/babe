@@ -21,7 +21,7 @@ RUN curl -SL https://nodejs.org/dist/v$NODE_VERSION/$NODE_FILEPATH.tar.xz -o $TM
     && cd $TMP/ && tar -xJf $NODE_FILEPATH.tar.xz && rm $NODE_FILEPATH.tar.xz \
     && mv $NODE_FILEPATH /opt/node \
     && ln -sf /opt/node/bin/node /usr/bin/node \
-    && ln -sf /opt/node/bin/npm /usr/bin/npm
+    && ln -sf /opt/node/bin/npm /usr/bin/npm \
     && ln -sf /opt/node/bin/npx /usr/bin/npx
 
 WORKDIR /app
